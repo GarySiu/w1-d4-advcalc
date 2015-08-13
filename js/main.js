@@ -40,8 +40,22 @@ butTripCalc.addEventListener('click', function() {
   document.getElementById('trip-answer').setAttribute('class','show');
 });
 // BMI Calculator
+var BMIMultiplier = 1;
 //Add an event listener to the selection box
-
+var BMIUnits = document.getElementById('bmi-units');
+BMIUnits.addEventListener('change', function() {
+  switch(BMIUnits.value) {
+    case "imperial":
+    document.getElementById('bmi-mass-unit').innerHTML = "lb";
+    document.getElementById('bmi-height-unit').innerHTML = "in";
+    BMIMultiplier = 703;
+    break;
+    default:
+    document.getElementById('bmi-mass-unit').innerHTML = "kg";
+    document.getElementById('bmi-height-unit').innerHTML = "m";
+    BMIMultiplier = 1;
+  };
+});
 //Add that event listener to the button
 var butBMICalc = document.getElementById('bmi-calc');
 butBMICalc.addEventListener('click', function() {
@@ -49,7 +63,7 @@ butBMICalc.addEventListener('click', function() {
   var BMIMass = parseFloat(document.getElementById('bmi-mass').value);
   var BMIHeight = parseFloat(document.getElementById('bmi-height').value);
 // Calculate the magical BMI equation
-  var BMIAnswer = BMIMass / Math.pow(BMIHeight,2);
+  var BMIAnswer = BMIMass / Math.pow(BMIHeight,2) * BMIMultiplier;
   document.getElementById('bmi-answer-alert').innerHTML = BMIAnswer.toFixed(2);
   document.getElementById('bmi-answer').setAttribute('class','show');
 });
