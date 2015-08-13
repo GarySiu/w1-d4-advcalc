@@ -34,12 +34,13 @@ butTripCalc.addEventListener('click', function() {
   var tripCost = parseFloat(document.getElementById('trip-cost').value);
   var tripSpeed = parseFloat(document.getElementById('trip-speed').value);
 //Invisibly adjust the MPG if the speed is > 60mph
-  var realMPG;
+  var MPGAdjustment = 0;
   if (Math.round(tripSpeed) > 60) {
-    realMPG = (Math.round(tripSpeed) - 60) * 2
-  }
+    MPGAdjustment = (Math.round(tripSpeed) - 60) * 2;
+    tripMPG -= MPGAdjustment;
+  };
 // Crunch the math with the bonus 2 decimal place precision
-  var tripAnswer = "Your trip will take " + (tripDist / tripSpeed).toFixed(2) + " hour(s) and cost $" + (tripDist * realMPG * tripCost).toFixed(2) + ".";
+  var tripAnswer = "Your trip will take " + (tripDist / tripSpeed).toFixed(2) + " hour(s) and cost $" + (tripDist / tripMPG * tripCost).toFixed(2) + ".";
 //Show the answer!
   document.getElementById('trip-answer-alert').innerHTML = tripAnswer;
   document.getElementById('trip-answer').setAttribute('class','show');
