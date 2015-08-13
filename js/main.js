@@ -6,8 +6,22 @@ butBasicCalc.addEventListener('click', function() {
   var basicNum2 = parseFloat(document.getElementById('basic-num-2').value);
   var basicOp = document.getElementById('basic-operation').value;
 // Basic calculator logic
-
+  var basicAnswer;
+  switch(basicOp) {
+    case "+" :
+    basicAnswer = basicNum1 + basicNum2;
+    break;
+    case "-" :
+    basicAnswer = basicNum1 - basicNum2;
+    break;
+    case "*" :
+    basicAnswer = basicNum1 * basicNum2;
+    break;
+    case "/" :
+    basicAnswer = basicNum1 / basicNum2;
+    break;
+  }
 // Put the answer in the answer area and then reveal it
-  document.getElementById('basic-answer-alert').innerHTML = basicNum1 + basicNum2;
+  document.getElementById('basic-answer-alert').innerHTML = basicAnswer;
   document.getElementById('basic-answer').setAttribute('class','show');
 });
