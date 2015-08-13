@@ -34,7 +34,7 @@ butTripCalc.addEventListener('click', function() {
   var tripCost = parseFloat(document.getElementById('trip-cost').value);
   var tripSpeed = parseFloat(document.getElementById('trip-speed').value);
 //Crunch the math
-  var tripAnswer;
+  var tripAnswer = "Your trip will take " + (tripDist / tripSpeed).toFixed(2) + " hour(s) and cost $" + (tripDist * tripMPG * tripCost).toFixed(2) + ".";
 //Show the answer!
   document.getElementById('trip-answer-alert').innerHTML = tripAnswer;
   document.getElementById('trip-answer').setAttribute('class','show');
