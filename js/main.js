@@ -20,8 +20,22 @@ butBasicCalc.addEventListener('click', function() {
     case "/" :
     basicAnswer = basicNum1 / basicNum2;
     break;
-  }
+  };
 // Put the answer in the answer area and then reveal it
   document.getElementById('basic-answer-alert').innerHTML = basicAnswer;
   document.getElementById('basic-answer').setAttribute('class','show');
+});
+// Add an event listener to the calculate button on the trip calculator
+var butTripCalc = document.getElementById('trip-calc');
+butTripCalc.addEventListener('click', function() {
+// Get all the values from the trip calc
+  var tripDist = parseFloat(document.getElementById('trip-distance').value);
+  var tripMPG = parseFloat(document.getElementById('trip-mpg').value);
+  var tripCost = parseFloat(document.getElementById('trip-cost').value);
+  var tripSpeed = parseFloat(document.getElementById('trip-speed').value);
+//Crunch the math
+  var tripAnswer;
+//Show the answer!
+  document.getElementById('trip-answer-alert').innerHTML = tripAnswer;
+  document.getElementById('trip-answer').setAttribute('class','show');
 });
