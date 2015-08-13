@@ -44,16 +44,23 @@ var BMIMultiplier = 1;
 //Add an event listener to the selection box
 var BMIUnits = document.getElementById('bmi-units');
 BMIUnits.addEventListener('change', function() {
+// Change the labels and set a multiplier to convert from metric to imperial
   switch(BMIUnits.value) {
     case "imperial":
     document.getElementById('bmi-mass-unit').innerHTML = "lb";
     document.getElementById('bmi-height-unit').innerHTML = "in";
     BMIMultiplier = 703;
+// Clear the entry boxes. I'd convert the values but I'm too tired to factorize 703 right now.
+    document.getElementById('bmi-mass').value = "";
+    document.getElementById('bmi-height').value = "";
     break;
+// And back again if they change it back
     default:
     document.getElementById('bmi-mass-unit').innerHTML = "kg";
     document.getElementById('bmi-height-unit').innerHTML = "m";
     BMIMultiplier = 1;
+    document.getElementById('bmi-mass').value = "";
+    document.getElementById('bmi-height').value = "";
   };
 });
 //Add that event listener to the button
