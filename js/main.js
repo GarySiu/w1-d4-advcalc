@@ -80,3 +80,18 @@ butBMICalc.addEventListener('click', function() {
   document.getElementById('bmi-answer-alert').innerHTML = BMIAnswer.toFixed(2);
   document.getElementById('bmi-answer').setAttribute('class','show');
 });
+// Add an event listener to the mortgage button
+var butMortCalc = document.getElementById('mortgage-calc');
+  butMortCalc.addEventListener('click', function() {
+    var mortLoan = parseFloat(document.getElementById('mortgage-loan').value);
+    var mortAPR = parseFloat(document.getElementById('mortgage-apr').value);
+    var mortTerm = parseFloat(document.getElementById('mortgage-term').value);
+    var mortInterest = mortAPR / 12;
+    var onePlusiPowN = Math.pow((1 + mortInterest), mortTerm);
+// Mortgage equation from hell
+    var mortAnswer = (mortLoan * ((mortAPR * onePlusiPowN) / (onePlusiPowN - 1)))/12;
+// Pound signs need to be HTML entities because reasons
+    document.getElementById('mortgage-answer-alert').innerHTML = "&pound" + mortAnswer.toFixed(2);
+    document.getElementById('mortgage-answer').setAttribute('class','show');
+  }
+);
