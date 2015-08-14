@@ -56,17 +56,17 @@ BMIUnits.addEventListener('change', function() {
     document.getElementById('bmi-mass-unit').innerHTML = "lb";
     document.getElementById('bmi-height-unit').innerHTML = "in";
     BMIMultiplier = 703;
-// Clear the entry boxes. I'd convert the values but I'm too tired to factorize 703 right now.
-    document.getElementById('bmi-mass').value = "";
-    document.getElementById('bmi-height').value = "";
+// Convert the values in the entry box
+    document.getElementById('bmi-mass').value = (parseFloat(document.getElementById('bmi-mass').value) * 2.20462).toFixed(2);
+    document.getElementById('bmi-height').value = (parseFloat(document.getElementById('bmi-height').value) * 39.3700787).toFixed(2);
     break;
 // And back again if they change it back
     default:
     document.getElementById('bmi-mass-unit').innerHTML = "kg";
     document.getElementById('bmi-height-unit').innerHTML = "m";
     BMIMultiplier = 1;
-    document.getElementById('bmi-mass').value = "";
-    document.getElementById('bmi-height').value = "";
+    document.getElementById('bmi-mass').value = (parseFloat(document.getElementById('bmi-mass').value) / 2.20462).toFixed(2);
+    document.getElementById('bmi-height').value = (parseFloat(document.getElementById('bmi-height').value) / 39.3700787).toFixed(2);
   };
 });
 //Add that event listener to the button
